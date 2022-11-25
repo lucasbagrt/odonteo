@@ -24,7 +24,7 @@ function Statement() {
       const options = {
         method: 'GET'
       }
-  
+      
       const { income } = await fetchApi(
         `https://odonteo-backend.herokuapp.com/income/${user.id}`,
         options,
@@ -57,13 +57,14 @@ function Statement() {
   }
 
   return (
-    <main>
+    <main data-testid="statement-id">
       <form>
         <label htmlFor='beginning-date'>
           Data de início:
           <input
             className='form-input date'
             id='beginning-date'
+            data-testid='beginning-date-id'
             name='beginningDate'
             type='date'
             onChange={(e) => handleChange(e, setDatesOfStatement)}
@@ -74,6 +75,7 @@ function Statement() {
           <input
             className='form-input date'
             id='ending-date'
+            data-testid='ending-date-id'
             name='endingDate'
             type='date'
             onChange={(e) => handleChange(e, setDatesOfStatement)}
@@ -82,6 +84,7 @@ function Statement() {
         <Button
           addClassName='form-button'
           onClickFunction={checkIncome}
+          data-testid="submit-id"
         >
           Consultar faturamento
         </Button>
